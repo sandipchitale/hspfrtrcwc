@@ -22,6 +22,7 @@ import java.util.List;
 @SpringBootApplication
 public class HspfrtrcwcApplication {
 
+	// backed by WebClient
 	record Post(long id, long userid, String title, boolean completed) {}
 
 	@Bean
@@ -54,6 +55,7 @@ public class HspfrtrcwcApplication {
 		};
 	}
 
+	// backed by RestClient
 	record Todo(long id, String name) {}
 
 	@Bean
@@ -84,6 +86,7 @@ public class HspfrtrcwcApplication {
 		};
 	}
 
+	// backed by RestTemplate
 	record Comment(long id, String name) {}
 
 	@Bean
@@ -106,7 +109,6 @@ public class HspfrtrcwcApplication {
 		HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory.builderFor(RestTemplateAdapter.create(restTemplate)).build();
 		return proxyFactory.createClient(CommentService.class);
 	}
-
 
 	@Bean
 	CommandLineRunner clrCommentService(CommentService commentService) {
