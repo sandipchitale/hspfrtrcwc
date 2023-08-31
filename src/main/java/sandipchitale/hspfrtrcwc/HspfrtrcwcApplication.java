@@ -92,7 +92,12 @@ public class HspfrtrcwcApplication {
 	@Bean
 	@Qualifier("comment-rest-template")
 	RestTemplate commentRestTemplate(RestTemplateBuilder builder) {
-		return builder.build();
+		// It appears that rootUri() does not work.
+		return builder
+				// It appears that rootUri() does not work.
+				// You have to use @HttpExchange on the interface.
+				// .rootUri("https://jsonplaceholder.typicode.com/comments")
+				.build();
 	}
 
 	@HttpExchange("https://jsonplaceholder.typicode.com/comments")
