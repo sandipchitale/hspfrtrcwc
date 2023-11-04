@@ -41,8 +41,7 @@ public class HspfrtrcwcApplication {
 
 	@Bean
 	PostService postClient(@Qualifier("post-web-client") WebClient webClient) {
-		HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory.builderFor(WebClientAdapter.forClient(webClient)).build();
-//		HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
+		HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory.builderFor(WebClientAdapter.create(webClient)).build();
 		return proxyFactory.createClient(PostService.class);
 	}
 
