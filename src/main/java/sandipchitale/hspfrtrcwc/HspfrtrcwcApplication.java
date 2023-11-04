@@ -50,13 +50,13 @@ public class HspfrtrcwcApplication {
 	@Bean
 	CommandLineRunner clrPostService(PostService postService) {
 		return (String... args) -> {
-			System.out.println("Post using PostClient backed by WebClient: " + postService.getPosts());
+			System.out.println("Posts using PostClient backed by WebClient: " + postService.getPosts());
 			System.out.println("Post using PostClient backed by WebClient: " + postService.getPost(1));
 		};
 	}
 
 	// backed by RestClient
-	record Todo(long id, String name) {}
+	record Todo(long id, String title, boolean completed, int userId) {}
 
 	@Bean
 	@Qualifier("todo-rest-client")
@@ -81,7 +81,7 @@ public class HspfrtrcwcApplication {
 	@Bean
 	CommandLineRunner clrTodoService(TodoService todoService) {
 		return (String... args) -> {
-			System.out.println("Todo using TodoClient backed by RestClient: " + todoService.getTodos());
+			System.out.println("Todos using TodoClient backed by RestClient: " + todoService.getTodos());
 			System.out.println("Todo using TodoClient backed by RestClient: " + todoService.getTodo(1));
 		};
 	}
@@ -118,7 +118,7 @@ public class HspfrtrcwcApplication {
 	@Bean
 	CommandLineRunner clrCommentService(CommentService commentService) {
 		return (String... args) -> {
-			System.out.println("Comment using CommentClient backed by RestTemplate: " + commentService.getComments());
+			System.out.println("Comments using CommentClient backed by RestTemplate: " + commentService.getComments());
 			System.out.println("Comment using CommentClient backed by RestTemplate: " + commentService.getComment(1));
 		};
 	}
